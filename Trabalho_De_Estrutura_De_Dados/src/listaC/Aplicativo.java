@@ -1,43 +1,45 @@
 package listaC;
 
 import lista.LCInteiro;
+import java.util.Random;
 
 public class Aplicativo {
-    public static void main(String[] args) {
-        LCInteiro l1 = new LCInteiro(5);
-        LCInteiro l2 = new LCInteiro(5);
+   
 
-        // Preenchendo a primeira lista
-        l1.insereFim(3);
-        l1.insereFim(5);
-        l1.insereFim(2);
-        l1.insereFim(1);
-        l1.insereFim(4);
+public static void main(String[] args) {
+    LCInteiro l1 = new LCInteiro(5);
+    LCInteiro l2 = new LCInteiro(5);
 
-        // Preenchendo a segunda lista
-        l2.insereFim(3);
-        l2.insereFim(5);
-        l2.insereFim(2);
-        l2.insereFim(1);
-        l2.insereFim(4);
-
-        // Imprimindo as listas
-        System.out.println("Lista 1: " + l1);
-        System.out.println("Lista 2: " + l2);
-
-        // Verificando se as listas s√£o iguais
-        if (iguais(l1, l2)) {
-            System.out.println("As listas s√£o iguais.");
-        } else {
-            System.out.println("As listas s√£o diferentes.");
-        }
-
-        // Criando a terceira lista
-        LCInteiro l3 = concatena(l1, l2);
-
-        // Imprimindo a terceira lista
-        System.out.println("Lista 3 (concatena√ß√£o de L1 com L2): " + l3);
+    // Gerando n˙meros aleatÛrios e preenchendo a primeira lista
+    Random random = new Random();
+    for (int i = 0; i < 5; i++) {
+        int num = random.nextInt(10); // Gera um n˙mero aleatÛrio entre 0 e 9
+        l1.insereFim(num);
     }
+
+    // Gerando n˙meros aleatÛrios e preenchendo a segunda lista
+    for (int i = 0; i < 5; i++) {
+        int num = random.nextInt(10); // Gera um n˙mero aleatÛrio entre 0 e 9
+        l2.insereFim(num);
+    }
+
+    // Imprimindo as listas
+    System.out.println("Lista 1: " + l1);
+    System.out.println("Lista 2: " + l2);
+
+    // Verificando se as listas s„o iguais
+    if (iguais(l1, l2)) {
+        System.out.println("As listas s„o iguais.");
+    } else {
+        System.out.println("As listas s„o diferentes.");
+    }
+
+    // Criando a terceira lista
+    LCInteiro l3 = concatena(l1, l2);
+
+    // Imprimindo a terceira lista
+    System.out.println("Lista 3 (concatenaÁ„o de L1 com L2): " + l3);
+}
 
     // M√©todo que verifica se duas listas s√£o iguais
     public static boolean iguais(LCInteiro l1, LCInteiro l2) {
