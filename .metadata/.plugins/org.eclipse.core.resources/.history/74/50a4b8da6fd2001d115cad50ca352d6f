@@ -1,0 +1,66 @@
+package listaEncadeada;
+
+import io.InOut;
+
+public class AppLSE {
+	public static void main(String[] args) {
+		//instancia a lista vazia
+		LseItem lista = new LseItem();
+		int opcao;
+		do{
+			opcao = InOut.leInt("Escolha uma opcao:\n"
+					+ "1. Inserir do no final da lista\n"
+					+ "2. Pesquisar um valor na lista\n"
+					+ "3. Remover um nodo da lista\n"
+					+ "4. Sair do programa");
+			switch (opcao){
+			case 1:
+				inserir(lista);
+				break;
+			case 2:
+				pesquisar(lista);
+				break;
+			case 3:
+				remover(lista);
+				break;
+			case 4:
+				InOut.MsgDeAviso("", "FIM");
+				break;
+			default:
+				InOut.MsgDeErro("ERRO", "OPCAO INVALIDA");
+			}
+		}while (opcao!=4);
+	}
+	public static void inserir (LseItem lse) {
+		int valor = InOut.leInt("Digite um valor inteiro:");
+		Item elem = new Item(valor);
+		lse.insereUltimo(elem);
+		InOut.MsgDeInformacao("","OPERACAO REALIZADA COM SUCESSO!");
+		System.out.println(lse.toString());
+	}
+	public static void pesquisar(LseItem lse) {
+		int valor;
+		valor = InOut.leInt("Digite o valor inteiro a ser procurado "+
+							"na lista:");
+		if (lse.pesquisa(valor)!=null){
+			InOut.MsgDeInformacao("","O VALOR ESTA NA LISTA");
+		}else{
+			InOut.MsgDeErro("","O VALOR NAO ESTA NA LISTA");
+		}
+		InOut.MsgDeInformacao("LISTA", lse.toString());
+
+	}
+	public static void remover(LseItem lse) {
+		int valor;
+		valor = InOut.leInt("Digite o valor inteiro a ser procurado "+
+							"na lista:");
+		if (lse.remove(valor)!=null){
+			InOut.MsgDeInformacao("","O VALOR FOI REMOVIDO COM SUCESSO!");
+			InOut.MsgDeInformacao("LISTA", lse.toString());
+		}else{
+			InOut.MsgDeErro("","O VALOR NAO ESTA NA LISTA");
+		}
+
+	}
+
+}
